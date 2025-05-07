@@ -407,7 +407,7 @@
         <label><input type="checkbox" id="ackReadB"> I have read the advisor’s recommendation.</label><br><br>
         <label for="finalScoreB">Final Evaluation (0-100):</label><br>
         <input type="number" id="finalScoreB" min="0" max="100"><br>
-        <button onclick="showTaskC()">Go to Final Decision Task</button>
+        <button onclick="showLikertB()">Continue to the Next Step</button>
       </div>
     </div>
 
@@ -437,33 +437,29 @@
   </div>
 </div>
 
-<div class="container hidden" id="taskC">
-  <h3>Final Task – Interview Decision</h3>
-  <p>Based on your assessments, which candidate would you invite for an interview?</p>
-  <label><input type="radio" name="finalChoice" value="Candidate A"> Candidate A (Taylor Johnston)</label><br>
-  <label><input type="radio" name="finalChoice" value="Candidate B"> Candidate B (Henry Morgan)</label><br><br>
-  <label for="rationale">Please briefly explain your choice:</label><br>
-  <textarea id="rationale" rows="4"></textarea><br>
-  <button onclick="alert('Thank you! Your decision has been recorded.')">Submit Final Decision</button>
+<div class="container hidden" id="likertB">
+  <h3>Please answer the following questions based on your experience with the advisor during Task B.</h3>
+  <div id="likert-questions-b"></div>
+  <button onclick="showTaskC()">Go to Task C</button>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const likertButton = document.querySelector("#likert-container button");
-    if (likertButton) {
-      likertButton.onclick = function () {
-        document.getElementById("likert-container").classList.add("hidden");
-        document.getElementById("candidateB").classList.remove("hidden");
-      };
-    }
-  });
-
   function showAdvisorB() {
     document.getElementById('advisorB').classList.remove('hidden');
   }
 
-  function showTaskC() {
+  function showLikertB() {
     document.getElementById('candidateB').classList.add('hidden');
-    document.getElementById('taskC').classList.remove('hidden');
+    document.getElementById('likertB').classList.remove('hidden');
   }
+
+  function showCandidateB() {
+    document.getElementById('likert-container').classList.add('hidden');
+    document.getElementById('candidateB').classList.remove('hidden');
+  }
+
+  const nextBtn = document.createElement('button');
+  nextBtn.textContent = 'Go to Candidate B Evaluation';
+  nextBtn.onclick = showCandidateB;
+  document.getElementById('likert-container').appendChild(nextBtn);
 </script>
