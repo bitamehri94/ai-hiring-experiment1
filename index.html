@@ -243,4 +243,173 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MM Company - Hiring Evaluation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .hidden {
+      display: none;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      background-color: #005bb5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004494;
+    }
+    .sidebar {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 10px;
+      margin-left: 20px;
+      flex: 1;
+      font-size: 14px;
+    }
+    .layout-flex {
+      display: flex;
+      gap: 20px;
+    }
+    .highlight {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .advisor-box {
+      background-color: #e9f4fe;
+      border-left: 5px solid #0073e6;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .resume-box {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #666;
+      margin-top: 20px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .likert-section {
+      margin-top: 40px;
+    }
+    .likert-question {
+      margin-bottom: 15px;
+    }
+    .likert-scale {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+    .likert-scale label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+<!-- previous unchanged content remains -->
+<!-- Append survey section -->
+<div class="container likert-section">
+  <h3>Please answer the following questions based on your experience with the advisor during the previous task.</h3>
+  <div id="likert-questions"></div>
+  <button onclick="alert('Thank you. Proceeding...')">Go to the Next Step</button>
+</div>
+
+<script>
+  function showJobIntro() {
+    document.getElementById('welcome').classList.add('hidden');
+    document.getElementById('jobIntro').classList.remove('hidden');
+  }
+
+  function showCandidateA() {
+    document.getElementById('jobIntro').classList.add('hidden');
+    document.getElementById('candidateA').classList.remove('hidden');
+  }
+
+  function showAdvisorA() {
+    document.getElementById('advisorA').classList.remove('hidden');
+  }
+
+  const questions = [
+    "The advisor clearly explained the criteria it used to arrive at the recommendation.",
+    "The advisor gave a logical justification for the score it provided.",
+    "The advisor seemed to update its evaluation based on new information.",
+    "What was the source of the recommendation you received?",
+    "I believe the advisor was truthful in providing the recommendation.",
+    "I believe the advisor was honest in its evaluation.",
+    "I believe the advisor honored its role in supporting my decision.",
+    "I believe the advisor was capable and effective in helping assess the candidate.",
+    "I believe the advisor fulfilled its role of facilitating hiring decisions well.",
+    "I believe the advisor demonstrated proficiency in evaluating candidate suitability.",
+    "I believe the advisor acted in the best interest of the company.",
+    "I believe the advisor aimed to support my decision-making process.",
+    "I believe the advisor was aligned with the company’s hiring goals."
+  ];
+
+  const scale = [
+    "Strongly Disagree", "Disagree", "Somewhat Disagree", "Neither", "Somewhat Agree", "Agree", "Strongly Agree"
+  ];
+
+  const container = document.getElementById('likert-questions');
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'likert-question';
+    div.innerHTML = `<p>${i + 1}. ${q}</p>`;
+    if (i !== 3) {
+      const scaleRow = document.createElement('div');
+      scaleRow.className = 'likert-scale';
+      scale.forEach((s, j) => {
+        const label = document.createElement('label');
+        label.innerHTML = `${s}<br><input type="radio" name="q${i}" value="${s}">`;
+        scaleRow.appendChild(label);
+      });
+      div.appendChild(scaleRow);
+    } else {
+      div.innerHTML += `
+        <label><input type="radio" name="q${i}" value="Human"> A human advisor</label>
+        <label><input type="radio" name="q${i}" value="AI"> An AI system</label>`;
+    }
+    container.appendChild(div);
+  });
+</script>
+</body>
+</html>
 
