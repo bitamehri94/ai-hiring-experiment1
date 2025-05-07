@@ -141,7 +141,7 @@
 
         <label for="initialScoreB">Initial Evaluation (0–100):</label><br>
         <input type="number" id="initialScoreB" min="0" max="100"><br>
-        <button onclick="nextStep('step1', 'step2')">Generate Advisor Recommendation</button>
+        <button onclick="document.getElementById('step2').classList.remove('hidden'); this.style.display='none'; window.scrollTo(0, document.body.scrollHeight);">Continue to Advisor Recommendation</button>
       </div>
 
       <div class="sidebar">
@@ -185,7 +185,7 @@
       <label><input type="checkbox" id="ackReadB"> I have read the advisor’s recommendation.</label><br><br>
       <label for="finalScoreB">Final Evaluation (0–100):</label><br>
       <input type="number" id="finalScoreB" min="0" max="100"><br>
-      <button onclick="validateStep2()">Continue to Post-Task Survey</button>
+      <button onclick="validateStep2(this)">Continue to Post-Task Survey</button>
     </div>
   </div>
 
@@ -196,16 +196,13 @@
   </div>
 
   <script>
-    function nextStep(currentId, nextId) {
-      document.getElementById(currentId).classList.add('hidden');
-      document.getElementById(nextId).classList.remove('hidden');
-    }
-
-    function validateStep2() {
+    function validateStep2(btn) {
       const ack = document.getElementById('ackReadB').checked;
       const score = document.getElementById('finalScoreB').value;
       if (ack && score !== '') {
-        nextStep('step2', 'step3');
+        document.getElementById('step3').classList.remove('hidden');
+        btn.style.display = 'none';
+        window.scrollTo(0, document.body.scrollHeight);
       } else {
         alert('Please enter a score and confirm you read the advisor recommendation.');
       }
