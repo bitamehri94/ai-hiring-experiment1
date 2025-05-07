@@ -418,6 +418,21 @@
       <p><strong>Location:</strong> Toronto Office</p>
       <p><strong>Employment Type:</strong> Full-time</p>
       <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
+      <p><strong>Job Description:</strong> Northbay Tech Solutions is seeking an energetic and detail-oriented Junior Operations Associate to support internal coordination, logistics, and day-to-day operations. This is an entry-level role that provides a unique opportunity to work cross-functionally with different teams across the organization.</p>
+      <p><strong>Key Responsibilities:</strong></p>
+      <ul>
+        <li>Coordinate internal scheduling and assist with daily workflow management.</li>
+        <li>Maintain and update documentation, logs, and team records.</li>
+        <li>Support operations managers in cross-functional project tracking.</li>
+        <li>Ensure timely communication between departments.</li>
+      </ul>
+      <p><strong>Desired Qualifications:</strong></p>
+      <ul>
+        <li>Bachelor’s degree in business, Communications, or a related field.</li>
+        <li>Familiarity with productivity tools (e.g., Google Workspace, Excel).</li>
+        <li>Excellent written and verbal communication skills.</li>
+        <li>Attention to detail and problem-solving mindset.</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -433,16 +448,22 @@
 </div>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const likertButton = document.querySelector("#likert-container button");
+    if (likertButton) {
+      likertButton.onclick = function () {
+        document.getElementById("likert-container").classList.add("hidden");
+        document.getElementById("candidateB").classList.remove("hidden");
+      };
+    }
+  });
+
   function showAdvisorB() {
     document.getElementById('advisorB').classList.remove('hidden');
   }
+
   function showTaskC() {
     document.getElementById('candidateB').classList.add('hidden');
     document.getElementById('taskC').classList.remove('hidden');
   }
-  // Add trigger after Likert to show Candidate B
-  document.querySelector("#likert-container button").onclick = function() {
-    document.getElementById("likert-container").classList.add("hidden");
-    document.getElementById("candidateB").classList.remove("hidden");
-  };
 </script>
