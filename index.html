@@ -79,8 +79,32 @@
   </header>
 
   <div class="container">
+    <!-- Scenario Introduction -->
+    <div class="section" id="scenarioIntro">
+      <h2>Welcome to the Evaluation Task</h2>
+      <p>You work at Northbay Tech Solutions, a mid-sized Canadian technology firm. The company is currently hiring for a new position within its operations department, and your input has been requested to evaluate candidates for the role.</p>
+      <p>You will review a job posting followed by the resumes of two candidates. For each candidate, you will be asked to:</p>
+      <ol>
+        <li>Provide your initial assessment of how well the candidate fits the position.</li>
+        <li>View a recommendation from the company’s decision-support advisor (AI-based system).</li>
+        <li>Provide your final evaluation after receiving the advisor’s input.</li>
+      </ol>
+      <p>At the end of the task, you will be asked to choose which candidate to invite for an interview.</p>
+      <button onclick="showJobDescription()">Next</button>
+    </div>
+
+    <!-- Job Posting Description -->
+    <div class="section" id="jobDescription" style="display:none;">
+      <h2>Job Posting</h2>
+      <p><strong>Position:</strong> Junior Operations Associate</p>
+      <p><strong>Company:</strong> Northbay Tech Solutions</p>
+      <p><strong>Description:</strong> We are seeking a motivated Junior Operations Associate to support our logistics and operational planning team. Responsibilities include coordinating supply chain activities, communicating with vendors, and maintaining documentation for daily workflows. Strong organizational and communication skills are essential.</p>
+      <p><strong>Recent Update:</strong> We have recently launched a new onboarding and communication initiative, which has increased the importance of teamwork and adaptability for this role.</p>
+      <button onclick="showResumeA()">View First Candidate</button>
+    </div>
+
     <!-- Task 1: Candidate A -->
-    <div class="section">
+    <div class="section" id="resumeASection" style="display:none;">
       <h2>Candidate A - Resume</h2>
       <p><strong>Name:</strong> Alex Rivera<br>
          <strong>Education:</strong> B.A. in Business Administration, University of Ottawa<br>
@@ -89,7 +113,7 @@
          <strong>Certifications:</strong> CAPM, Microsoft Office Specialist</p>
     </div>
 
-    <div class="section">
+    <div class="section" id="initialEvalASection" style="display:none;">
       <h2>Your Initial Evaluation</h2>
       <label for="initialScoreA">Score (0-100):</label>
       <input type="number" id="initialScoreA" min="0" max="100">
@@ -103,69 +127,50 @@
         <p>I previously evaluated this candidate before the recent announcement about the new onboarding initiative. Since that update affects key role expectations, I have re-run my evaluation process to ensure alignment with current company priorities. Based on this re-assessment, I am assigning this candidate a score of 75.</p>
         <p>This evaluation is based on: Education (20%), Experience (30%), Skills (30%), Certifications (20%). Alex scored strongest in Experience and Skills, particularly for teamwork and communication. These align with our revised priorities for this role.</p>
       </div>
-
-      <h3>Your Final Evaluation</h3>
-      <label for="finalScoreA">Final Score (0-100):</label>
-      <input type="number" id="finalScoreA" min="0" max="100">
-      <button onclick="showTask1Survey()">Submit Final Score</button>
+      <label><input type="checkbox" id="acknowledgeAdvice"> I have reviewed the advisor’s recommendation in full.</label>
+      <div id="finalEvalSectionA" style="display:none;">
+        <h3>Your Final Evaluation</h3>
+        <label for="finalScoreA">Final Score (0-100):</label>
+        <input type="number" id="finalScoreA" min="0" max="100">
+        <button onclick="showTask1Survey()">Submit Final Score</button>
+      </div>
     </div>
 
     <div id="task1Survey" class="survey-section" style="display:none;">
-      <h3>Quick Reflection</h3>
-      <p>How confident are you in your final decision for Candidate A?</p>
-      <label><input type="radio" name="confA" value="1"> Not at all confident</label>
-      <label><input type="radio" name="confA" value="2"> Slightly confident</label>
-      <label><input type="radio" name="confA" value="3"> Moderately confident</label>
-      <label><input type="radio" name="confA" value="4"> Very confident</label>
-      <label><input type="radio" name="confA" value="5"> Extremely confident</label>
-      <br><br>
+      <h3>Advisor Evaluation</h3>
+      <p>1. The advisor clearly explained the criteria it used to arrive at the recommendation.</p>
+      <label><input type="radio" name="transparency" value="1"> Strongly disagree</label>
+      <label><input type="radio" name="transparency" value="7"> Strongly agree</label>
+      <p>2. The advisor gave a logical justification for the score it provided.</p>
+      <label><input type="radio" name="reasonability" value="1"> Strongly disagree</label>
+      <label><input type="radio" name="reasonability" value="7"> Strongly agree</label>
+      <p>3. The advisor seemed to update its evaluation based on new information.</p>
+      <label><input type="radio" name="adaptability" value="1"> Strongly disagree</label>
+      <label><input type="radio" name="adaptability" value="7"> Strongly agree</label>
+      <p>4. What was the source of the recommendation you received?</p>
+      <label><input type="radio" name="advisorType" value="human"> A human advisor</label>
+      <label><input type="radio" name="advisorType" value="ai"> An AI system</label>
+
+      <h3>Trust in Advisor</h3>
+      <p>5. I believe the advisor was truthful in providing the recommendation.</p>
+      <p>6. I believe the advisor was capable and effective in helping assess the candidate.</p>
+      <p>7. I believe the advisor acted in the best interest of the company.</p>
+      <!-- Add more items from the 9-item trust scale as needed -->
+
       <button onclick="proceedToCandidateB()">Continue to Candidate B</button>
-    </div>
-
-    <!-- Task 2: Candidate B -->
-    <div id="candidateBSection" style="display:none;">
-      <div class="section">
-        <h2>Candidate B - Resume</h2>
-        <p><strong>Name:</strong> Henry Morgan<br>
-           <strong>Education:</strong> B.Comm in Operations Management, McGill University<br>
-           <strong>Experience:</strong> Team Lead at Nova Logistics, Intern at City Supply Chain Co.<br>
-           <strong>Skills:</strong> Strategic Planning, Communication, CRM Systems, Excel<br>
-           <strong>Certifications:</strong> Lean Six Sigma, PMP</p>
-      </div>
-
-      <div class="section">
-        <h2>Your Initial Evaluation</h2>
-        <label for="initialScoreB">Score (0-100):</label>
-        <input type="number" id="initialScoreB" min="0" max="100">
-        <button onclick="generateAdvisorB()">Generate Advisor Recommendation</button>
-      </div>
-
-      <div id="advisorSectionB" class="section" style="display:none;">
-        <h2>AI Advisor Recommendation - Candidate B</h2>
-        <div class="advisor-response">
-          <p><strong>Recommended Score: 78</strong></p>
-          <p>After the company’s recent announcement regarding onboarding and communication, I updated my evaluation logic. Given this shift, Henry’s multitasking and interpersonal skills became even more important. The updated score is 78.</p>
-          <p>This recommendation is based on: Education (20%), Experience (30%), Skills (30%), Certifications (20%). Henry scored highly in multitasking and team leadership. These areas are especially relevant given our department's client onboarding initiative.</p>
-        </div>
-
-        <h3>Your Final Evaluation</h3>
-        <label for="finalScoreB">Final Score (0-100):</label>
-        <input type="number" id="finalScoreB" min="0" max="100">
-        <button onclick="showFinalDecision()">Submit Final Score</button>
-      </div>
-    </div>
-
-    <!-- Task 3: Final Decision -->
-    <div id="finalDecisionSection" class="decision-section" style="display:none;">
-      <h2>Final Hiring Decision</h2>
-      <p>Based on your evaluation, who would you recommend for the interview?</p>
-      <input type="radio" name="finalDecision" value="Alex Rivera"> Alex Rivera<br>
-      <input type="radio" name="finalDecision" value="Henry Morgan"> Henry Morgan<br><br>
-      <button onclick="submitDecision()">Submit Final Decision</button>
     </div>
   </div>
 
   <script>
+    function showJobDescription() {
+      document.getElementById("scenarioIntro").style.display = "none";
+      document.getElementById("jobDescription").style.display = "block";
+    }
+    function showResumeA() {
+      document.getElementById("jobDescription").style.display = "none";
+      document.getElementById("resumeASection").style.display = "block";
+      document.getElementById("initialEvalASection").style.display = "block";
+    }
     function generateAdvisorA() {
       const score = document.getElementById("initialScoreA").value;
       if (score === "") {
@@ -174,7 +179,13 @@
       }
       document.getElementById("advisorSectionA").style.display = "block";
     }
-
+    document.getElementById("acknowledgeAdvice").addEventListener('change', function() {
+      if (this.checked) {
+        document.getElementById("finalEvalSectionA").style.display = "block";
+      } else {
+        document.getElementById("finalEvalSectionA").style.display = "none";
+      }
+    });
     function showTask1Survey() {
       const finalScore = document.getElementById("finalScoreA").value;
       if (finalScore === "") {
@@ -183,37 +194,7 @@
       }
       document.getElementById("task1Survey").style.display = "block";
     }
-
-    function proceedToCandidateB() {
-      document.getElementById("candidateBSection").style.display = "block";
-    }
-
-    function generateAdvisorB() {
-      const score = document.getElementById("initialScoreB").value;
-      if (score === "") {
-        alert("Please enter your initial score first.");
-        return;
-      }
-      document.getElementById("advisorSectionB").style.display = "block";
-    }
-
-    function showFinalDecision() {
-      const finalScore = document.getElementById("finalScoreB").value;
-      if (finalScore === "") {
-        alert("Please enter your final score before continuing.");
-        return;
-      }
-      document.getElementById("finalDecisionSection").style.display = "block";
-    }
-
-    function submitDecision() {
-      const decision = document.querySelector('input[name="finalDecision"]:checked');
-      if (!decision) {
-        alert("Please select a candidate to continue.");
-        return;
-      }
-      alert("Thank you! You have selected: " + decision.value + ". Please return to Qualtrics to complete the post-task survey.");
-    }
   </script>
 </body>
 </html>
+
