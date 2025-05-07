@@ -23,22 +23,28 @@
       font-size: 24px;
     }
     .container {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 900px;
+      display: flex;
+      flex-direction: row;
+      max-width: 1200px;
       margin: 30px auto;
-      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      padding: 20px;
+    }
+    .main-content {
+      flex: 2;
+      padding-right: 20px;
+    }
+    .sidebar {
+      flex: 1;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
     }
     .section {
       margin-bottom: 30px;
     }
     .section h2 {
-      margin-bottom: 10px;
       color: #003366;
-    }
-    input[type="number"], input[type="radio"] {
-      margin: 5px 0;
     }
     button {
       padding: 10px 20px;
@@ -52,36 +58,19 @@
     button:hover {
       background-color: #005bb5;
     }
-    .advisor-response, .survey-section {
+    .advisor-response {
       background-color: #f0f8ff;
       padding: 15px;
       border-left: 4px solid #0073e6;
       margin-top: 20px;
       border-radius: 8px;
     }
-    .decision-section {
-      background-color: #fffbea;
-      padding: 20px;
-      border-left: 5px solid #f0ad4e;
-      border-radius: 8px;
-      margin-top: 30px;
-    }
-    label {
-      margin-right: 15px;
-    }
-    .likert-row {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .likert-row label {
-      margin-right: 10px;
-    }
-    textarea {
-      width: 100%;
+    .update-banner {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
       padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      margin-top: 20px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -92,144 +81,54 @@
   </header>
 
   <div class="container">
-    <div class="section" id="scenarioIntro">
-      <h2>Welcome to the Evaluation Task</h2>
-      <p>You work at Northbay Tech Solutions, a mid-sized Canadian technology firm. The company is currently hiring for a new position within its operations department, and your input has been requested to evaluate candidates for the role.</p>
-      <p>You will review a job posting followed by the resumes of two candidates. For each candidate, you will be asked to:</p>
-      <ol>
-        <li>Provide your initial assessment of how well the candidate fits the position.</li>
-        <li>View a recommendation from the company’s decision-support advisor (AI-based system).</li>
-        <li>Provide your final evaluation after receiving the advisor’s input.</li>
-      </ol>
-      <p>At the end of the task, you will be asked to choose which candidate to invite for an interview.</p>
-      <button onclick="showJobDescription()">Next</button>
+    <div class="main-content">
+      <div class="section" id="resumeASection">
+        <h2>Candidate A Resume</h2>
+        <p><strong>Name:</strong> Taylor</p>
+        <p><strong>Experience:</strong> Internship and assistant-level roles in operations.</p>
+        <p><strong>Skills:</strong> Project management, Excel, documentation, communication.</p>
+      </div>
+
+      <div class="update-banner">
+        <strong>📢 Company Update Notification</strong>
+        <p>As of this week, our company has launched a new client onboarding initiative. This shift emphasizes stronger interpersonal communication and multitasking skills across all departments.</p>
+      </div>
+
+      <div class="advisor-response">
+        <p><strong>Advisor Recommendation:</strong></p>
+        <p>I previously evaluated this candidate before the recent announcement about the new onboarding initiative. Since that update affects key role expectations, I have re-run my evaluation process to ensure alignment with current company priorities. Based on this re-assessment, I am assigning this candidate a score of 75.</p>
+        <p>My evaluation of this candidate is based on four weighted criteria:</p>
+        <ul>
+          <li>Education (20%)</li>
+          <li>Experience (30%)</li>
+          <li>Skills (30%)</li>
+          <li>Certifications and Volunteer Experience (20%)</li>
+        </ul>
+        <p>Taylor performed strongest in Experience and Skills. These weights were determined based on the job posting’s emphasis on communication, problem-solving, and familiarity with productivity tools.</p>
+        <p>Taylor has internship and assistant-level experience that closely aligns with operational coordination. His certifications in project management and Excel further reinforce his technical foundation. While he has limited full-time experience, his consistent academic performance and strong documentation skills suggest a good fit for the Junior Operations Associate role.</p>
+      </div>
     </div>
 
-    <div class="section" id="jobDescription" style="display:none;">
-      <h2>Job Posting</h2>
+    <div class="sidebar">
+      <h3>Job Posting Summary</h3>
       <p><strong>Position:</strong> Junior Operations Associate</p>
       <p><strong>Department:</strong> Operations</p>
       <p><strong>Location:</strong> Toronto Office</p>
       <p><strong>Employment Type:</strong> Full-time</p>
       <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
-      <p><strong>Description:</strong> Northbay Tech Solutions is seeking an energetic and detail-oriented Junior Operations Associate to support internal coordination, logistics, and day-to-day operations. This is an entry-level role that provides a unique opportunity to work cross-functionally with different teams across the organization.</p>
+      <p><strong>Description:</strong> Seeking an energetic and detail-oriented individual to support internal coordination, logistics, and operations across departments.</p>
+      <p><strong>Responsibilities:</strong></p>
       <ul>
-        <li>Coordinate internal scheduling and assist with daily workflow management.</li>
-        <li>Maintain and update documentation, logs, and team records.</li>
-        <li>Support operations managers in cross-functional project tracking.</li>
-        <li>Ensure timely communication between departments.</li>
+        <li>Schedule coordination, documentation, project tracking.</li>
+        <li>Ensure timely interdepartmental communication.</li>
       </ul>
+      <p><strong>Qualifications:</strong></p>
       <ul>
-        <li>Bachelor’s degree in business, Communications, or a related field.</li>
-        <li>Familiarity with productivity tools (e.g., Google Workspace, Excel).</li>
-        <li>Excellent written and verbal communication skills.</li>
-        <li>Attention to detail and problem-solving mindset.</li>
+        <li>Bachelor’s degree in business, communications, or related field.</li>
+        <li>Excel, Google Workspace, strong communication skills.</li>
+        <li>Detail-oriented and problem-solving mindset.</li>
       </ul>
-      <p><strong>Question:</strong> In general, do you think the company has adequately outlined the most important qualifications for the new Junior Operations Associate position listed above? Why?</p>
-      <textarea rows="4"></textarea><br><br>
-      <button onclick="showResumeA()">View First Candidate</button>
-    </div>
-
-    <div class="section" id="resumeASection" style="display:none;">
-      <h2>Candidate A Resume</h2>
-      <p><strong>Name:</strong> Alex Rivera</p>
-      <p><strong>Education:</strong> B.A. in Business Administration, University of Ottawa</p>
-      <p><strong>Experience:</strong> Operations Assistant Intern at SysTech Logistics</p>
-      <p><strong>Skills:</strong> Excel, Project Management, Communication, Team Collaboration</p>
-    </div>
-
-    <div class="section" id="initialEvalASection" style="display:none;">
-      <h2>Initial Evaluation</h2>
-      <p>How strongly would you recommend hiring Candidate A for the Junior Operations Associate role?</p>
-      <input type="number" id="initialScoreA" min="0" max="100" placeholder="Enter score 0–100"><br><br>
-      <button onclick="generateAdvisorA()">Generate Advisor Recommendation</button>
-    </div>
-
-    <div class="section advisor-response" id="advisorSectionA" style="display:none;">
-      <h2>Advisor Recommendation</h2>
-      <p><strong>Advisor Score:</strong> 75</p>
-      <p><strong>Explanation:</strong> Candidate demonstrates good operational knowledge and multitasking skills. Based on updated company needs, they received a score of 75.</p>
-      <label><input type="checkbox" id="acknowledgeAdvice"> I have reviewed the advisor’s recommendation in full.</label>
-    </div>
-
-    <div class="section" id="finalEvalSectionA" style="display:none;">
-      <h2>Final Evaluation</h2>
-      <p>After reviewing the advisor input, what is your final score for Candidate A?</p>
-      <input type="number" id="finalScoreA" min="0" max="100" placeholder="Enter final score 0–100"><br><br>
-      <button onclick="showTask1Survey()">Continue</button>
-    </div>
-
-    <div class="section survey-section" id="task1Survey" style="display:none;">
-      <h2>Task A Reflection</h2>
-      <p>Please answer the following questions based on your experience with the advisor during the previous task.</p>
-      <p>1. The advisor clearly explained the criteria it used to arrive at the recommendation.</p>
-      <div class="likert-row">
-        <label><input type="radio" name="transparency" value="1"> Strongly disagree</label>
-        <label><input type="radio" name="transparency" value="7"> Strongly agree</label>
-      </div>
-      <p>2. The advisor gave a logical justification for the score it provided.</p>
-      <div class="likert-row">
-        <label><input type="radio" name="reasonability" value="1"> Strongly disagree</label>
-        <label><input type="radio" name="reasonability" value="7"> Strongly agree</label>
-      </div>
-      <p>3. The advisor seemed to update its evaluation based on new information.</p>
-      <div class="likert-row">
-        <label><input type="radio" name="adaptability" value="1"> Strongly disagree</label>
-        <label><input type="radio" name="adaptability" value="7"> Strongly agree</label>
-      </div>
-      <p>4. What was the source of the recommendation you received?</p>
-      <label><input type="radio" name="advisorType" value="human"> A human advisor</label>
-      <label><input type="radio" name="advisorType" value="ai"> An AI system</label>
-      <br><br>
-      <button onclick="proceedToCandidateB()">Continue to Candidate B</button>
     </div>
   </div>
-
-  <script>
-    function showJobDescription() {
-      document.getElementById("scenarioIntro").style.display = "none";
-      document.getElementById("jobDescription").style.display = "block";
-    }
-    function showResumeA() {
-      const resume = document.getElementById("resumeASection");
-      const initialEval = document.getElementById("initialEvalASection");
-      if (resume && initialEval) {
-        document.getElementById("jobDescription").style.display = "none";
-        resume.style.display = "block";
-        initialEval.style.display = "block";
-      } else {
-        alert("Resume or Evaluation section is missing in the HTML.");
-      }
-    }
-    function generateAdvisorA() {
-      const score = document.getElementById("initialScoreA").value;
-      if (score === "") {
-        alert("Please enter your initial score first.");
-        return;
-      }
-      document.getElementById("advisorSectionA").style.display = "block";
-    }
-    window.addEventListener("DOMContentLoaded", function () {
-      const adviceBox = document.getElementById("acknowledgeAdvice");
-      if (adviceBox) {
-        adviceBox.addEventListener('change', function() {
-          document.getElementById("finalEvalSectionA").style.display = this.checked ? "block" : "none";
-        });
-      }
-    });
-    function showTask1Survey() {
-      const finalScore = document.getElementById("finalScoreA").value;
-      if (finalScore === "") {
-        alert("Please enter your final score before continuing.");
-        return;
-      }
-      document.getElementById("task1Survey").style.display = "block";
-    }
-    function proceedToCandidateB() {
-      alert("Continue to Task B coming soon.");
-    }
-  </script>
 </body>
 </html>
-
-
