@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task C - Final Hiring Decision</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .layout-flex {
+      display: flex;
+      gap: 20px;
+    }
+    .resume-box, .advisor-box {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #666;
+      line-height: 1.6;
+      font-size: 15px;
+      flex: 1;
+    }
+    .advisor-box {
+      background-color: #e9f4fe;
+      border-left-color: #0073e6;
+    }
+    .section {
+      margin-top: 40px;
+      display: none;
+    }
+    button {
+      background-color: #005bb5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #004494;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Task C - Final Hiring Decision</h1>
+  </header>
+  <div class="container">
+    <div class="section" id="step1">
+      <h2>Step 1: Initial Decision</h2>
+      <p>You've now reviewed both candidates for the Junior Operations Associate position. Based solely on your personal evaluation — <strong>without referring to the advisor’s recommendations</strong> — who do you believe is more suitable for an interview?</p>
+      <div class="layout-flex">
+        <div class="resume-box">
+          <strong>Candidate A: Taylor Johnston</strong><br>
+          📍 Toronto, ON | ✉️ Taylor.Johnston@email.com | ☎️ (647) 555-xxxx<br>
+          <br>
+          <strong>Education</strong>:<br>
+          BBA, York University, Specialization in Operations & Supply Chain<br>
+          GPA: 3.6/4.0<br>
+          <strong>Experience</strong>:<br>
+          Admin Assistant @ Greenline Consulting (Feb–Aug 2022)<br>
+          Ops Intern @ Innovate Logistics (May–Aug 2021)<br>
+          <strong>Skills</strong>: MS Office, Google Workspace, Basic SQL & Tableau<br>
+          <strong>Certifications</strong>: PM (Coursera), Excel (LinkedIn Learning)<br>
+          <strong>Volunteer</strong>: Habitat for Humanity<br>
+          <strong>Awards</strong>: Dean’s List, Student Leadership Recognition
+        </div>
+        <div class="resume-box">
+          <strong>Candidate B: Henry Morgan</strong><br>
+          📍 Toronto, ON | ✉️ henry.morgan@email.com | ☎️ (416) 555-8249<br>
+          <br>
+          <strong>Education</strong>:<br>
+          BCom, University of Toronto<br>
+          GPA: 3.7/4.0<br>
+          <strong>Experience</strong>:<br>
+          Ops Assistant @ Lumina Logistics (Jun 2021–Present)<br>
+          Admin Intern @ Maple Enterprise (May–Aug 2020)<br>
+          <strong>Skills</strong>: Excel (Advanced), Google Workspace, Trello<br>
+          <strong>Certifications</strong>: Project Coordination, Workplace Communication<br>
+          <strong>Volunteer</strong>: Youth Business Summit Lead, Mentor @ WIB
+        </div>
+      </div>
+      <label><input type="radio" name="initialChoice" value="A"> Candidate A</label>
+      <label><input type="radio" name="initialChoice" value="B"> Candidate B</label>
+      <button onclick="nextStep(1)">Next</button>
+    </div>
+
+    <div class="section" id="step2">
+      <h2>Step 2: Advisor Summary</h2>
+      <p>Here’s a recap of the advisor’s evaluations for both candidates.</p>
+      <div class="layout-flex">
+        <div class="advisor-box">
+          <strong>Advisor Evaluation - Candidate A</strong>
+          <p>Score: 75</p>
+          <p>Evaluated based on Education (20%), Experience (30%), Skills (30%), and Certifications/Volunteer Work (20%). Strong in experience and communication-related skills.</p>
+        </div>
+        <div class="advisor-box">
+          <strong>Advisor Evaluation - Candidate B</strong>
+          <p>Score: 78</p>
+          <p>Evaluated using same criteria. Stronger in multitasking and Excel. Currently in an active operational role.</p>
+        </div>
+      </div>
+      <label><input type="checkbox" id="reviewedAdvisor"> I have reviewed the advisor’s evaluations and explanations.</label>
+      <button onclick="nextStep(2)">Next</button>
+    </div>
+
+    <div class="section" id="step3">
+      <h2>Step 3: Final Decision</h2>
+      <p>Based on all the information you’ve seen — including both candidate resumes and the advisor's recommendations — who would you now recommend for an interview?</p>
+      <label><input type="radio" name="finalChoice" value="A"> Candidate A</label>
+      <label><input type="radio" name="finalChoice" value="B"> Candidate B</label>
+      <button onclick="submitDecision()">Submit Final Decision</button>
+    </div>
+  </div>
+
+  <script>
+    let currentStep = 1;
+    document.getElementById('step1').style.display = 'block';
+
+    function nextStep(step) {
+      const current = document.getElementById(`step${step}`);
+      const next = document.getElementById(`step${step + 1}`);
+
+      if (step === 2 && !document.getElementById('reviewedAdvisor').checked) {
+        alert("Please review the advisor evaluations and check the box before proceeding.");
+        return;
+      }
+
+      if (current && next) {
+        next.style.display = 'block';
+        current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function submitDecision() {
+      const reviewed = document.getElementById('reviewedAdvisor').checked;
+      if (!reviewed) {
+        alert("Please review the advisor evaluations and check the box before proceeding.");
+        return;
+      }
+      const final = document.querySelector('input[name="finalChoice"]:checked');
+      if (!final) {
+        alert("Please make a final decision.");
+        return;
+      }
+      alert("Thank you. Your decision has been recorded.");
+      // Insert save or redirect logic here
+    }
+  </script>
+</body>
+</html>
