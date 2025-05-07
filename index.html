@@ -224,7 +224,7 @@
           <label><input type="checkbox" id="ackRead"> I have read the advisor’s recommendation.</label><br><br>
           <label for="finalScore">Final Evaluation (0-100):</label><br>
           <input type="number" id="finalScore" min="0" max="100"><br>
-          <button onclick="alert('Proceeding to next candidate...')">Continue to Candidate B</button>
+          <button onclick="showLikert()">Go to the Next Step</button>
         </div>
       </div>
 
@@ -268,6 +268,9 @@
     function showAdvisorA() {
       document.getElementById('advisorA').classList.remove('hidden');
     }
+    function showLikert() {
+  document.getElementById('likert-container').style.display = 'block';
+}
   </script>
 </body>
 </html>
@@ -277,7 +280,8 @@
   <div class="container likert-section" id="likert-container" style="display: none;">
     <h3>Please answer the following questions based on your experience with the advisor during the previous task.</h3>
     <div id="likert-questions"></div>
-    <button onclick="alert('Thank you. Proceeding...')">Go to the Next Step</button>
+    <button onclick="alert('Proceeding to next candidate...')">Continue to Candidate B</button>
+
   </div>
 
   <script>
