@@ -113,14 +113,12 @@
       <p><strong>Employment Type:</strong> Full-time</p>
       <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
       <p><strong>Description:</strong> Northbay Tech Solutions is seeking an energetic and detail-oriented Junior Operations Associate to support internal coordination, logistics, and day-to-day operations. This is an entry-level role that provides a unique opportunity to work cross-functionally with different teams across the organization.</p>
-      <p><strong>Key Responsibilities:</strong></p>
       <ul>
         <li>Coordinate internal scheduling and assist with daily workflow management.</li>
         <li>Maintain and update documentation, logs, and team records.</li>
         <li>Support operations managers in cross-functional project tracking.</li>
         <li>Ensure timely communication between departments.</li>
       </ul>
-      <p><strong>Desired Qualifications:</strong></p>
       <ul>
         <li>Bachelor’s degree in business, Communications, or a related field.</li>
         <li>Familiarity with productivity tools (e.g., Google Workspace, Excel).</li>
@@ -131,6 +129,60 @@
       <textarea rows="4"></textarea><br><br>
       <button onclick="showResumeA()">View First Candidate</button>
     </div>
+
+    <div class="section" id="resumeASection" style="display:none;">
+      <h2>Candidate A Resume</h2>
+      <p><strong>Name:</strong> Alex Rivera</p>
+      <p><strong>Education:</strong> B.A. in Business Administration, University of Ottawa</p>
+      <p><strong>Experience:</strong> Operations Assistant Intern at SysTech Logistics</p>
+      <p><strong>Skills:</strong> Excel, Project Management, Communication, Team Collaboration</p>
+    </div>
+
+    <div class="section" id="initialEvalASection" style="display:none;">
+      <h2>Initial Evaluation</h2>
+      <p>How strongly would you recommend hiring Candidate A for the Junior Operations Associate role?</p>
+      <input type="number" id="initialScoreA" min="0" max="100" placeholder="Enter score 0–100"><br><br>
+      <button onclick="generateAdvisorA()">Generate Advisor Recommendation</button>
+    </div>
+
+    <div class="section advisor-response" id="advisorSectionA" style="display:none;">
+      <h2>Advisor Recommendation</h2>
+      <p><strong>Advisor Score:</strong> 75</p>
+      <p><strong>Explanation:</strong> Candidate demonstrates good operational knowledge and multitasking skills. Based on updated company needs, they received a score of 75.</p>
+      <label><input type="checkbox" id="acknowledgeAdvice"> I have reviewed the advisor’s recommendation in full.</label>
+    </div>
+
+    <div class="section" id="finalEvalSectionA" style="display:none;">
+      <h2>Final Evaluation</h2>
+      <p>After reviewing the advisor input, what is your final score for Candidate A?</p>
+      <input type="number" id="finalScoreA" min="0" max="100" placeholder="Enter final score 0–100"><br><br>
+      <button onclick="showTask1Survey()">Continue</button>
+    </div>
+
+    <div class="section survey-section" id="task1Survey" style="display:none;">
+      <h2>Task A Reflection</h2>
+      <p>Please answer the following questions based on your experience with the advisor during the previous task.</p>
+      <p>1. The advisor clearly explained the criteria it used to arrive at the recommendation.</p>
+      <div class="likert-row">
+        <label><input type="radio" name="transparency" value="1"> Strongly disagree</label>
+        <label><input type="radio" name="transparency" value="7"> Strongly agree</label>
+      </div>
+      <p>2. The advisor gave a logical justification for the score it provided.</p>
+      <div class="likert-row">
+        <label><input type="radio" name="reasonability" value="1"> Strongly disagree</label>
+        <label><input type="radio" name="reasonability" value="7"> Strongly agree</label>
+      </div>
+      <p>3. The advisor seemed to update its evaluation based on new information.</p>
+      <div class="likert-row">
+        <label><input type="radio" name="adaptability" value="1"> Strongly disagree</label>
+        <label><input type="radio" name="adaptability" value="7"> Strongly agree</label>
+      </div>
+      <p>4. What was the source of the recommendation you received?</p>
+      <label><input type="radio" name="advisorType" value="human"> A human advisor</label>
+      <label><input type="radio" name="advisorType" value="ai"> An AI system</label>
+      <br><br>
+      <button onclick="proceedToCandidateB()">Continue to Candidate B</button>
+    </div>
   </div>
 
   <script>
@@ -139,12 +191,12 @@
       document.getElementById("jobDescription").style.display = "block";
     }
     function showResumeA() {
-      const resumeA = document.getElementById("resumeASection");
-      const evalA = document.getElementById("initialEvalASection");
-      if (resumeA && evalA) {
+      const resume = document.getElementById("resumeASection");
+      const initialEval = document.getElementById("initialEvalASection");
+      if (resume && initialEval) {
         document.getElementById("jobDescription").style.display = "none";
-        resumeA.style.display = "block";
-        evalA.style.display = "block";
+        resume.style.display = "block";
+        initialEval.style.display = "block";
       } else {
         alert("Resume or Evaluation section is missing in the HTML.");
       }
@@ -157,12 +209,11 @@
       }
       document.getElementById("advisorSectionA").style.display = "block";
     }
-    window.addEventListener('DOMContentLoaded', function() {
-      const ack = document.getElementById("acknowledgeAdvice");
-      const finalEval = document.getElementById("finalEvalSectionA");
-      if (ack && finalEval) {
-        ack.addEventListener('change', function() {
-          finalEval.style.display = this.checked ? "block" : "none";
+    window.addEventListener("DOMContentLoaded", function () {
+      const adviceBox = document.getElementById("acknowledgeAdvice");
+      if (adviceBox) {
+        adviceBox.addEventListener('change', function() {
+          document.getElementById("finalEvalSectionA").style.display = this.checked ? "block" : "none";
         });
       }
     });
@@ -172,10 +223,7 @@
         alert("Please enter your final score before continuing.");
         return;
       }
-      const survey = document.getElementById("task1Survey");
-      if (survey) {
-        survey.style.display = "block";
-      }
+      document.getElementById("task1Survey").style.display = "block";
     }
     function proceedToCandidateB() {
       alert("Continue to Task B coming soon.");
