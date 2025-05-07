@@ -3,57 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hiring Task - AI Advisor Interface</title>
+  <title>Northbay Tech Hiring Simulation</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #eef2f3, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
     }
     .container {
       background: white;
       padding: 30px;
       border-radius: 12px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: 30px auto;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
     }
     .section {
       margin-bottom: 30px;
     }
     .section h2 {
       margin-bottom: 10px;
+      color: #003366;
     }
-    input[type="number"] {
-      width: 80px;
-      padding: 5px;
+    input[type="number"], input[type="radio"] {
+      margin: 5px 0;
     }
     button {
       padding: 10px 20px;
       border: none;
       border-radius: 8px;
-      background-color: #4CAF50;
+      background-color: #0073e6;
       color: white;
       font-size: 16px;
       cursor: pointer;
     }
-    .advisor-response {
-      background-color: #e6f7ff;
+    button:hover {
+      background-color: #005bb5;
+    }
+    .advisor-response, .survey-section {
+      background-color: #f0f8ff;
       padding: 15px;
-      border-left: 5px solid #1890ff;
-      margin-top: 15px;
+      border-left: 4px solid #0073e6;
+      margin-top: 20px;
       border-radius: 8px;
     }
     .decision-section {
-      background-color: #fff8dc;
+      background-color: #fffbea;
       padding: 20px;
-      border-left: 5px solid #ff9800;
+      border-left: 5px solid #f0ad4e;
       border-radius: 8px;
       margin-top: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Northbay Tech Solutions - Candidate Evaluation</h1>
+    <p>Role: Junior Operations Associate</p>
+  </header>
+
   <div class="container">
     <!-- Task 1: Candidate A -->
     <div class="section">
@@ -83,7 +107,19 @@
       <h3>Your Final Evaluation</h3>
       <label for="finalScoreA">Final Score (0-100):</label>
       <input type="number" id="finalScoreA" min="0" max="100">
-      <button onclick="proceedToCandidateB()">Submit Final Score</button>
+      <button onclick="showTask1Survey()">Submit Final Score</button>
+    </div>
+
+    <div id="task1Survey" class="survey-section" style="display:none;">
+      <h3>Quick Reflection</h3>
+      <p>How confident are you in your final decision for Candidate A?</p>
+      <label><input type="radio" name="confA" value="1"> Not at all confident</label>
+      <label><input type="radio" name="confA" value="2"> Slightly confident</label>
+      <label><input type="radio" name="confA" value="3"> Moderately confident</label>
+      <label><input type="radio" name="confA" value="4"> Very confident</label>
+      <label><input type="radio" name="confA" value="5"> Extremely confident</label>
+      <br><br>
+      <button onclick="proceedToCandidateB()">Continue to Candidate B</button>
     </div>
 
     <!-- Task 2: Candidate B -->
@@ -139,12 +175,16 @@
       document.getElementById("advisorSectionA").style.display = "block";
     }
 
-    function proceedToCandidateB() {
+    function showTask1Survey() {
       const finalScore = document.getElementById("finalScoreA").value;
       if (finalScore === "") {
         alert("Please enter your final score before continuing.");
         return;
       }
+      document.getElementById("task1Survey").style.display = "block";
+    }
+
+    function proceedToCandidateB() {
       document.getElementById("candidateBSection").style.display = "block";
     }
 
@@ -177,4 +217,3 @@
   </script>
 </body>
 </html>
-Add initial experiment interface
