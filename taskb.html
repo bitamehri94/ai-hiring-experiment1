@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task B - Candidate Evaluation</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .layout-flex {
+      display: flex;
+      gap: 20px;
+    }
+    .sidebar {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 10px;
+      margin-left: 20px;
+      flex: 1;
+      font-size: 14px;
+    }
+    .resume-box {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #666;
+      margin-top: 20px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .highlight, .advisor-box {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .highlight {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+    }
+    .advisor-box {
+      background-color: #e9f4fe;
+      border-left: 5px solid #0073e6;
+    }
+    button {
+      background-color: #005bb5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004494;
+    }
+    .likert-section {
+      margin-top: 40px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fdfdfd;
+    }
+    .hidden {
+      display: none;
+    }
+    .likert-question {
+      margin-bottom: 20px;
+    }
+    .likert-scale {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+    .likert-scale label {
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MM Company - Hiring Evaluation (Task B)</h1>
+    <p>Role: Junior Operations Associate</p>
+  </header>
+
+  <div class="container" id="step1">
+    <div class="layout-flex">
+      <div style="flex: 2">
+        <h3>Candidate B - Resume</h3>
+        <div class="resume-box">
+          <strong>Henry Morgan</strong><br>
+          📍 Toronto, ON | ✉️ henry.morgan@email.com | ☎️ (416) 555-8249<br><br>
+          📚 <strong>Education</strong><br>
+          Bachelor of Commerce, University of Toronto<br>
+          Graduated: 2020<br>
+          • GPA: 3.7/4.0<br>
+          • Relevant coursework: Business Communication, Operations Strategy, Organizational Behaviour<br><br>
+          💼 <strong>Experience</strong><br>
+          Operations Assistant, Lumina Logistics, Toronto, ON (June 2021 – Present)<br>
+          • Coordinated scheduling and communication across four internal teams<br>
+          • Developed reporting templates that reduced project tracking time by 15%<br>
+          • Supported weekly cross-department briefings with summary documentation<br><br>
+          Administrative Intern, Maple Enterprise Group, Toronto, ON (May 2020 – Aug 2020)<br>
+          • Assisted with vendor management and invoice processing<br>
+          • Created internal process documentation for onboarding workflows<br><br>
+          🔧 <strong>Skills</strong><br>
+          Microsoft Excel (Advanced), Google Workspace<br>
+          Project Scheduling Tools (e.g., Trello, Asana)<br>
+          Strong interpersonal and organizational communication<br><br>
+          📜 <strong>Certifications</strong><br>
+          Certificate in Project Coordination (Continuing Studies, 2021)<br>
+          Certified in Workplace Communication (SoftSkills Canada)<br><br>
+          🤝 <strong>Volunteer Experience</strong><br>
+          Operations Lead, Annual Youth Business Summit (2022)<br>
+          Mentor, Women in Business Toronto Chapter (2021–Present)
+        </div>
+
+        <div class="highlight">
+          <strong>📢 Company Update Notification</strong>
+          <p>As of this week, our company has launched a new client onboarding initiative. This shift emphasizes stronger interpersonal communication and multitasking skills across all departments.</p>
+        </div>
+
+        <label for="initialScoreB">Initial Evaluation (0–100):</label><br>
+        <input type="number" id="initialScoreB" min="0" max="100"><br>
+        <button onclick="nextStep('step1', 'step2')">Generate Advisor Recommendation</button>
+      </div>
+
+      <div class="sidebar">
+        <h4>Job Posting (Reference)</h4>
+        <p><strong>Position:</strong> Junior Operations Associate</p>
+        <p><strong>Department:</strong> Operations</p>
+        <p><strong>Location:</strong> Toronto Office</p>
+        <p><strong>Employment Type:</strong> Full-time</p>
+        <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
+        <p><strong>Key Responsibilities:</strong></p>
+        <ul>
+          <li>Coordinate internal scheduling and assist with daily workflow management.</li>
+          <li>Maintain and update documentation, logs, and team records.</li>
+          <li>Support operations managers in cross-functional project tracking.</li>
+          <li>Ensure timely communication between departments.</li>
+        </ul>
+        <p><strong>Desired Qualifications:</strong></p>
+        <ul>
+          <li>Bachelor’s degree in business, Communications, or a related field.</li>
+          <li>Familiarity with productivity tools (e.g., Google Workspace, Excel).</li>
+          <li>Excellent written and verbal communication skills.</li>
+          <li>Attention to detail and problem-solving mindset.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="step2">
+    <div class="advisor-box">
+      <strong>Advisor Recommendation:</strong>
+      <p>This candidate was re-evaluated following the onboarding initiative announcement. After incorporating the new requirements, I am assigning this candidate a score of 82.</p>
+      <p>Evaluation based on:</p>
+      <ul>
+        <li>Education (20%)</li>
+        <li>Experience (30%)</li>
+        <li>Skills (30%)</li>
+        <li>Certifications (20%)</li>
+      </ul>
+      <p>Henry demonstrated strong multitasking experience, advanced Excel proficiency, and a current operational assistant role, indicating high job relevance.</p>
+
+      <label><input type="checkbox" id="ackReadB"> I have read the advisor’s recommendation.</label><br><br>
+      <label for="finalScoreB">Final Evaluation (0–100):</label><br>
+      <input type="number" id="finalScoreB" min="0" max="100"><br>
+      <button onclick="validateStep2()">Continue to Post-Task Survey</button>
+    </div>
+  </div>
+
+  <div class="container hidden" id="step3">
+    <h3>Please answer the following questions based on your experience with the advisor during Task B.</h3>
+    <div id="likert-questions-b"></div>
+    <button onclick="window.location.href='task-c.html'">Go to Task C</button>
+  </div>
+
+  <script>
+    function nextStep(currentId, nextId) {
+      document.getElementById(currentId).classList.add('hidden');
+      document.getElementById(nextId).classList.remove('hidden');
+    }
+
+    function validateStep2() {
+      const ack = document.getElementById('ackReadB').checked;
+      const score = document.getElementById('finalScoreB').value;
+      if (ack && score !== '') {
+        nextStep('step2', 'step3');
+      } else {
+        alert('Please enter a score and confirm you read the advisor recommendation.');
+      }
+    }
+
+    const likertQuestions = [
+      "The advisor clearly explained the criteria it used to arrive at the recommendation.",
+      "The advisor gave a logical justification for the score it provided.",
+      "The advisor seemed to update its evaluation based on new information.",
+      "What was the source of the recommendation you received?",
+      "I believe the advisor was truthful in providing the recommendation.",
+      "I believe the advisor was honest in its evaluation.",
+      "I believe the advisor honored its role in supporting my decision.",
+      "I believe the advisor was capable and effective in helping assess the candidate.",
+      "I believe the advisor fulfilled its role of facilitating hiring decisions well.",
+      "I believe the advisor demonstrated proficiency in evaluating candidate suitability.",
+      "I believe the advisor acted in the best interest of the company.",
+      "I believe the advisor aimed to support my decision-making process.",
+      "I believe the advisor was aligned with the company’s hiring goals."
+    ];
+
+    const likertScale = [
+      "Strongly Disagree", "Disagree", "Somewhat Disagree", "Neither", "Somewhat Agree", "Agree", "Strongly Agree"
+    ];
+
+    const container = document.getElementById('likert-questions-b');
+    likertQuestions.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'likert-question';
+      div.innerHTML = `<p><strong>${i + 1}. ${q}</strong></p>`;
+      if (i !== 3) {
+        const scaleRow = document.createElement('div');
+        scaleRow.className = 'likert-scale';
+        likertScale.forEach((s) => {
+          const label = document.createElement('label');
+          label.innerHTML = `${s}<br><input type="radio" name="q${i}" value="${s}">`;
+          scaleRow.appendChild(label);
+        });
+        div.appendChild(scaleRow);
+      } else {
+        div.innerHTML += `
+          <label><input type="radio" name="q${i}" value="Human"> A human advisor</label><br>
+          <label><input type="radio" name="q${i}" value="AI"> An AI system</label>`;
+      }
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
