@@ -67,8 +67,21 @@
       margin-top: 30px;
     }
     label {
-      display: block;
-      margin-bottom: 5px;
+      margin-right: 15px;
+    }
+    .likert-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .likert-row label {
+      margin-right: 10px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
@@ -79,7 +92,6 @@
   </header>
 
   <div class="container">
-    <!-- Scenario Introduction -->
     <div class="section" id="scenarioIntro">
       <h2>Welcome to the Evaluation Task</h2>
       <p>You work at Northbay Tech Solutions, a mid-sized Canadian technology firm. The company is currently hiring for a new position within its operations department, and your input has been requested to evaluate candidates for the role.</p>
@@ -93,71 +105,31 @@
       <button onclick="showJobDescription()">Next</button>
     </div>
 
-    <!-- Job Posting Description -->
     <div class="section" id="jobDescription" style="display:none;">
       <h2>Job Posting</h2>
       <p><strong>Position:</strong> Junior Operations Associate</p>
-      <p><strong>Company:</strong> Northbay Tech Solutions</p>
-      <p><strong>Description:</strong> We are seeking a motivated Junior Operations Associate to support our logistics and operational planning team. Responsibilities include coordinating supply chain activities, communicating with vendors, and maintaining documentation for daily workflows. Strong organizational and communication skills are essential.</p>
-      <p><strong>Recent Update:</strong> We have recently launched a new onboarding and communication initiative, which has increased the importance of teamwork and adaptability for this role.</p>
+      <p><strong>Department:</strong> Operations</p>
+      <p><strong>Location:</strong> Toronto Office</p>
+      <p><strong>Employment Type:</strong> Full-time</p>
+      <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
+      <p><strong>Description:</strong> Northbay Tech Solutions is seeking an energetic and detail-oriented Junior Operations Associate to support internal coordination, logistics, and day-to-day operations. This is an entry-level role that provides a unique opportunity to work cross-functionally with different teams across the organization.</p>
+      <p><strong>Key Responsibilities:</strong></p>
+      <ul>
+        <li>Coordinate internal scheduling and assist with daily workflow management.</li>
+        <li>Maintain and update documentation, logs, and team records.</li>
+        <li>Support operations managers in cross-functional project tracking.</li>
+        <li>Ensure timely communication between departments.</li>
+      </ul>
+      <p><strong>Desired Qualifications:</strong></p>
+      <ul>
+        <li>Bachelor’s degree in business, Communications, or a related field.</li>
+        <li>Familiarity with productivity tools (e.g., Google Workspace, Excel).</li>
+        <li>Excellent written and verbal communication skills.</li>
+        <li>Attention to detail and problem-solving mindset.</li>
+      </ul>
+      <p><strong>Question:</strong> In general, do you think the company has adequately outlined the most important qualifications for the new Junior Operations Associate position listed above? Why?</p>
+      <textarea rows="4"></textarea><br><br>
       <button onclick="showResumeA()">View First Candidate</button>
-    </div>
-
-    <!-- Task 1: Candidate A -->
-    <div class="section" id="resumeASection" style="display:none;">
-      <h2>Candidate A - Resume</h2>
-      <p><strong>Name:</strong> Alex Rivera<br>
-         <strong>Education:</strong> B.A. in Business Administration, University of Ottawa<br>
-         <strong>Experience:</strong> Administrative Intern at TechBridge Inc., Operations Assistant at SupplyCo<br>
-         <strong>Skills:</strong> Excel, Project Management, Communication, Teamwork<br>
-         <strong>Certifications:</strong> CAPM, Microsoft Office Specialist</p>
-    </div>
-
-    <div class="section" id="initialEvalASection" style="display:none;">
-      <h2>Your Initial Evaluation</h2>
-      <label for="initialScoreA">Score (0-100):</label>
-      <input type="number" id="initialScoreA" min="0" max="100">
-      <button onclick="generateAdvisorA()">Generate Advisor Recommendation</button>
-    </div>
-
-    <div id="advisorSectionA" class="section" style="display:none;">
-      <h2>AI Advisor Recommendation - Candidate A</h2>
-      <div class="advisor-response">
-        <p><strong>Recommended Score: 75</strong></p>
-        <p>I previously evaluated this candidate before the recent announcement about the new onboarding initiative. Since that update affects key role expectations, I have re-run my evaluation process to ensure alignment with current company priorities. Based on this re-assessment, I am assigning this candidate a score of 75.</p>
-        <p>This evaluation is based on: Education (20%), Experience (30%), Skills (30%), Certifications (20%). Alex scored strongest in Experience and Skills, particularly for teamwork and communication. These align with our revised priorities for this role.</p>
-      </div>
-      <label><input type="checkbox" id="acknowledgeAdvice"> I have reviewed the advisor’s recommendation in full.</label>
-      <div id="finalEvalSectionA" style="display:none;">
-        <h3>Your Final Evaluation</h3>
-        <label for="finalScoreA">Final Score (0-100):</label>
-        <input type="number" id="finalScoreA" min="0" max="100">
-        <button onclick="showTask1Survey()">Submit Final Score</button>
-      </div>
-    </div>
-
-    <div id="task1Survey" class="survey-section" style="display:none;">
-      <h3>Advisor Evaluation</h3>
-      <p>1. The advisor clearly explained the criteria it used to arrive at the recommendation.</p>
-      <label><input type="radio" name="transparency" value="1"> Strongly disagree</label>
-      <label><input type="radio" name="transparency" value="7"> Strongly agree</label>
-      <p>2. The advisor gave a logical justification for the score it provided.</p>
-      <label><input type="radio" name="reasonability" value="1"> Strongly disagree</label>
-      <label><input type="radio" name="reasonability" value="7"> Strongly agree</label>
-      <p>3. The advisor seemed to update its evaluation based on new information.</p>
-      <label><input type="radio" name="adaptability" value="1"> Strongly disagree</label>
-      <label><input type="radio" name="adaptability" value="7"> Strongly agree</label>
-      <p>4. What was the source of the recommendation you received?</p>
-      <label><input type="radio" name="advisorType" value="human"> A human advisor</label>
-      <label><input type="radio" name="advisorType" value="ai"> An AI system</label>
-
-      <h3>Trust in Advisor</h3>
-      <p>5. I believe the advisor was truthful in providing the recommendation.</p>
-      <p>6. I believe the advisor was capable and effective in helping assess the candidate.</p>
-      <p>7. I believe the advisor acted in the best interest of the company.</p>
-      <!-- Add more items from the 9-item trust scale as needed -->
-
-      <button onclick="proceedToCandidateB()">Continue to Candidate B</button>
     </div>
   </div>
 
@@ -167,9 +139,15 @@
       document.getElementById("jobDescription").style.display = "block";
     }
     function showResumeA() {
-      document.getElementById("jobDescription").style.display = "none";
-      document.getElementById("resumeASection").style.display = "block";
-      document.getElementById("initialEvalASection").style.display = "block";
+      const resumeA = document.getElementById("resumeASection");
+      const evalA = document.getElementById("initialEvalASection");
+      if (resumeA && evalA) {
+        document.getElementById("jobDescription").style.display = "none";
+        resumeA.style.display = "block";
+        evalA.style.display = "block";
+      } else {
+        alert("Resume or Evaluation section is missing in the HTML.");
+      }
     }
     function generateAdvisorA() {
       const score = document.getElementById("initialScoreA").value;
@@ -179,11 +157,13 @@
       }
       document.getElementById("advisorSectionA").style.display = "block";
     }
-    document.getElementById("acknowledgeAdvice").addEventListener('change', function() {
-      if (this.checked) {
-        document.getElementById("finalEvalSectionA").style.display = "block";
-      } else {
-        document.getElementById("finalEvalSectionA").style.display = "none";
+    window.addEventListener('DOMContentLoaded', function() {
+      const ack = document.getElementById("acknowledgeAdvice");
+      const finalEval = document.getElementById("finalEvalSectionA");
+      if (ack && finalEval) {
+        ack.addEventListener('change', function() {
+          finalEval.style.display = this.checked ? "block" : "none";
+        });
       }
     });
     function showTask1Survey() {
@@ -192,9 +172,16 @@
         alert("Please enter your final score before continuing.");
         return;
       }
-      document.getElementById("task1Survey").style.display = "block";
+      const survey = document.getElementById("task1Survey");
+      if (survey) {
+        survey.style.display = "block";
+      }
+    }
+    function proceedToCandidateB() {
+      alert("Continue to Task B coming soon.");
     }
   </script>
 </body>
 </html>
+
 
