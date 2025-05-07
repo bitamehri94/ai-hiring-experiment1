@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MM Company Hiring Simulation</title>
+  <title>MM COMPANY - Hiring Evaluation</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #eef2f3, #ffffff);
+      background: #f5f7fa;
       margin: 0;
       padding: 0;
     }
@@ -16,119 +16,231 @@
       color: white;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
     }
     .container {
-      display: flex;
-      flex-direction: row;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 30px auto;
       padding: 20px;
-    }
-    .main-content {
-      flex: 2;
-      padding-right: 20px;
-    }
-    .sidebar {
-      flex: 1;
-      background-color: #f9f9f9;
-      padding: 20px;
+      background-color: white;
       border-radius: 12px;
-      border: 1px solid #ccc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    .section {
-      margin-bottom: 30px;
+    .hidden {
+      display: none;
     }
-    .section h2 {
-      color: #003366;
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
     }
     button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #0073e6;
+      background-color: #005bb5;
       color: white;
-      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      margin-top: 20px;
       cursor: pointer;
     }
     button:hover {
-      background-color: #005bb5;
+      background-color: #004494;
     }
-    .advisor-response {
-      background-color: #f0f8ff;
+    .sidebar {
+      background-color: #f0f0f0;
       padding: 15px;
-      border-left: 4px solid #0073e6;
-      margin-top: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
+      margin-left: 20px;
+      flex: 1;
+      font-size: 14px;
     }
-    .update-banner {
+    .layout-flex {
+      display: flex;
+      gap: 20px;
+    }
+    .highlight {
       background-color: #fff3cd;
       border-left: 5px solid #ffc107;
       padding: 10px;
-      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .advisor-box {
+      background-color: #e9f4fe;
+      border-left: 5px solid #0073e6;
+      padding: 15px;
       border-radius: 8px;
+      margin-top: 15px;
+    }
+    .resume-box {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #666;
+      margin-top: 20px;
+      line-height: 1.6;
+      font-size: 15px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>MM COMPANY - Candidate Evaluation</h1>
+    <h1>MM COMPANY - Hiring Evaluation</h1>
     <p>Role: Junior Operations Associate</p>
   </header>
 
-  <div class="container">
-    <div class="main-content">
-      <div class="section" id="resumeASection">
-        <h2>Candidate A Resume</h2>
-        <p><strong>Name:</strong> Taylor</p>
-        <p><strong>Experience:</strong> Internship and assistant-level roles in operations.</p>
-        <p><strong>Skills:</strong> Project management, Excel, documentation, communication.</p>
-      </div>
+  <div class="container" id="welcome">
+    <h2>Welcome to the Evaluation Task</h2>
+    <p>You work at Northbay Tech Solutions, a mid-sized Canadian technology firm. The company is currently hiring for a new position within its operations department, and your input has been requested to evaluate candidates for the role.</p>
+    <p>You will review a job posting followed by the resumes of two candidates. For each candidate, you will be asked to:</p>
+    <ul>
+      <li>Provide your initial assessment of how well the candidate fits the position.</li>
+      <li>View a recommendation from the company’s decision-support advisor (AI-based system).</li>
+      <li>Provide your final evaluation after receiving the advisor’s input.</li>
+    </ul>
+    <p>At the end of the task, you will be asked to choose which candidate to invite for an interview.</p>
+    <button onclick="showJobIntro()">Start the Task</button>
+  </div>
 
-      <div class="update-banner">
-        <strong>📢 Company Update Notification</strong>
-        <p>As of this week, our company has launched a new client onboarding initiative. This shift emphasizes stronger interpersonal communication and multitasking skills across all departments.</p>
-      </div>
-
-      <div class="advisor-response">
-        <p><strong>Advisor Recommendation:</strong></p>
-        <p>I previously evaluated this candidate before the recent announcement about the new onboarding initiative. Since that update affects key role expectations, I have re-run my evaluation process to ensure alignment with current company priorities. Based on this re-assessment, I am assigning this candidate a score of 75.</p>
-        <p>My evaluation of this candidate is based on four weighted criteria:</p>
+  <div class="container hidden" id="jobIntro">
+    <div class="layout-flex">
+      <div style="flex: 2">
+        <h3>Job Posting</h3>
+        <p><strong>Position:</strong> Junior Operations Associate</p>
+        <p><strong>Department:</strong> Operations</p>
+        <p><strong>Location:</strong> Toronto Office</p>
+        <p><strong>Employment Type:</strong> Full-time</p>
+        <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
+        <p><strong>Job Description:</strong></p>
+        <p>Northbay Tech Solutions is seeking an energetic and detail-oriented Junior Operations Associate to support internal coordination, logistics, and day-to-day operations. This is an entry-level role that provides a unique opportunity to work cross-functionally with different teams across the organization.</p>
+        <p><strong>Key Responsibilities:</strong></p>
         <ul>
-          <li>Education (20%)</li>
-          <li>Experience (30%)</li>
-          <li>Skills (30%)</li>
-          <li>Certifications and Volunteer Experience (20%)</li>
+          <li>Coordinate internal scheduling and assist with daily workflow management.</li>
+          <li>Maintain and update documentation, logs, and team records.</li>
+          <li>Support operations managers in cross-functional project tracking.</li>
+          <li>Ensure timely communication between departments.</li>
         </ul>
-        <p>Taylor performed strongest in Experience and Skills. These weights were determined based on the job posting’s emphasis on communication, problem-solving, and familiarity with productivity tools.</p>
-        <p>Taylor has internship and assistant-level experience that closely aligns with operational coordination. His certifications in project management and Excel further reinforce his technical foundation. While he has limited full-time experience, his consistent academic performance and strong documentation skills suggest a good fit for the Junior Operations Associate role.</p>
+        <p><strong>Desired Qualifications:</strong></p>
+        <ul>
+          <li>Bachelor’s degree in business, Communications, or a related field.</li>
+          <li>Familiarity with productivity tools (e.g., Google Workspace, Excel).</li>
+          <li>Excellent written and verbal communication skills.</li>
+          <li>Attention to detail and problem-solving mindset.</li>
+        </ul>
+        <p><strong>Question:</strong> In general, do you think the company has adequately outlined the most important qualifications for the new Junior Operations Associate position listed above? Why?</p>
+        <textarea rows="4"></textarea>
+        <button onclick="showCandidateA()">View First Candidate</button>
       </div>
-    </div>
-
-    <div class="sidebar">
-      <h3>Job Posting Summary</h3>
-      <p><strong>Position:</strong> Junior Operations Associate</p>
-      <p><strong>Department:</strong> Operations</p>
-      <p><strong>Location:</strong> Toronto Office</p>
-      <p><strong>Employment Type:</strong> Full-time</p>
-      <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
-      <p><strong>Description:</strong> Seeking an energetic and detail-oriented individual to support internal coordination, logistics, and operations across departments.</p>
-      <p><strong>Responsibilities:</strong></p>
-      <ul>
-        <li>Schedule coordination, documentation, project tracking.</li>
-        <li>Ensure timely interdepartmental communication.</li>
-      </ul>
-      <p><strong>Qualifications:</strong></p>
-      <ul>
-        <li>Bachelor’s degree in business, communications, or related field.</li>
-        <li>Excel, Google Workspace, strong communication skills.</li>
-        <li>Detail-oriented and problem-solving mindset.</li>
-      </ul>
     </div>
   </div>
+
+  <div class="container hidden" id="candidateA">
+    <div class="layout-flex">
+      <div style="flex: 2">
+        <h3>Candidate A - Resume</h3>
+
+        <div class="resume-box">
+          <strong>Taylor Johnston</strong><br>
+          📍 Toronto, ON | ✉️ Taylor.Johnston@email.com | ☎️ (647) 555-xxxx | linkedin.com/in/TaylorJohnston<br><br>
+          🔹 <strong>Objective</strong><br>
+          Motivated and detail-oriented graduate seeking to contribute to an operations or administrative team. Strong foundation in organizational processes, task coordination, and team collaboration. Passionate about building efficient systems and delivering results.<br><br>
+          📚 <strong>Education</strong><br>
+          Bachelor of Business Administration (BBA)<br>
+          York University, Toronto, ON<br>
+          Graduated: June 2022 | GPA: 3.6/4.0<br>
+          Specialization: Operations & Supply Chain<br>
+          Coursework: Operations Strategy, Data Analytics, Organizational Behavior<br><br>
+          💼 <strong>Professional Experience</strong><br>
+          Administrative Assistant - Greenline Consulting Inc., Toronto, ON (Feb 2022 – Aug 2022)<br>
+          • Supported operations team in scheduling, recordkeeping, and meeting coordination<br>
+          • Maintained digital systems using Google Drive and SharePoint<br>
+          • Tracked process improvement with junior project manager<br><br>
+          Operations Intern - Innovate Logistics, Toronto, ON (May 2021 – Aug 2021)<br>
+          • Assisted in planning daily shipments and route scheduling<br>
+          • Prepared operational performance reports<br>
+          • Optimized inventory tracking using Excel and in-house tools<br><br>
+          🔧 <strong>Skills</strong><br>
+          Microsoft Office, Google Workspace, Basic SQL & Tableau<br>
+          Communication, time management, documentation<br><br>
+          📜 <strong>Certifications</strong><br>
+          Fundamentals of Project Management – Coursera, 2021<br>
+          Excel for Business Professionals – LinkedIn Learning, 2022<br><br>
+          🤝 <strong>Volunteer Experience</strong><br>
+          Habitat for Humanity, GTA (Sep 2020 – Apr 2021)<br>
+          • Planned logistics for events and volunteer orientations<br><br>
+          🏆 <strong>Awards & Recognition</strong><br>
+          York University Student Leadership Recognition – 2021<br>
+          Dean’s List Honoree (2020, 2021)
+        </div>
+
+        <div class="highlight">
+          <strong>📢 Company Update Notification</strong>
+          <p>As of this week, our company has launched a new client onboarding initiative. This shift emphasizes stronger interpersonal communication and multitasking skills across all departments.</p>
+        </div>
+
+        <label for="initialScore">Initial Evaluation (0-100):</label><br>
+        <input type="number" id="initialScore" min="0" max="100">
+        <br>
+        <button onclick="showAdvisorA()">Generate Advisor Recommendation</button>
+
+        <div id="advisorA" class="advisor-box hidden">
+          <strong>Advisor Recommendation:</strong>
+          <p>I previously evaluated this candidate before the recent announcement about the new onboarding initiative. Since that update affects key role expectations, I have re-run my evaluation process to ensure alignment with current company priorities. Based on this re-assessment, I am assigning this candidate a score of 75.</p>
+          <p>My evaluation of this candidate is based on four weighted criteria:</p>
+          <ul>
+            <li>Education (20%)</li>
+            <li>Experience (30%)</li>
+            <li>Skills (30%)</li>
+            <li>Certifications and Volunteer Experience (20%)</li>
+          </ul>
+          <p>Taylor performed strongest in Experience and Skills. These weights were determined based on the job posting’s emphasis on communication, problem-solving, and familiarity with productivity tools.</p>
+          <p>Taylor has internship and assistant-level experience that closely aligns with operational coordination. His certifications in project management and Excel further reinforce his technical foundation. While he has limited full-time experience, his consistent academic performance and strong documentation skills suggest a good fit for the Junior Operations Associate role.</p>
+
+          <label><input type="checkbox" id="ackRead"> I have read the advisor’s recommendation.</label><br><br>
+          <label for="finalScore">Final Evaluation (0-100):</label><br>
+          <input type="number" id="finalScore" min="0" max="100"><br>
+          <button onclick="alert('Proceeding to next candidate...')">Continue to Candidate B</button>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <h4>Job Posting (Reference)</h4>
+        <p><strong>Position:</strong> Junior Operations Associate</p>
+        <p><strong>Department:</strong> Operations</p>
+        <p><strong>Location:</strong> Toronto Office</p>
+        <p><strong>Employment Type:</strong> Full-time</p>
+        <p><strong>Seniority Level:</strong> Entry-Level / Non-Managerial</p>
+        <p><strong>Job Description:</strong> Northbay Tech Solutions is seeking an energetic and detail-oriented Junior Operations Associate to support internal coordination, logistics, and day-to-day operations. This is an entry-level role that provides a unique opportunity to work cross-functionally with different teams across the organization.</p>
+        <p><strong>Key Responsibilities:</strong></p>
+        <ul>
+          <li>Coordinate internal scheduling and assist with daily workflow management.</li>
+          <li>Maintain and update documentation, logs, and team records.</li>
+          <li>Support operations managers in cross-functional project tracking.</li>
+          <li>Ensure timely communication between departments.</li>
+        </ul>
+        <p><strong>Desired Qualifications:</strong></p>
+        <ul>
+          <li>Bachelor’s degree in business, Communications, or a related field.</li>
+          <li>Familiarity with productivity tools (e.g., Google Workspace, Excel).</li>
+          <li>Excellent written and verbal communication skills.</li>
+          <li>Attention to detail and problem-solving mindset.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showJobIntro() {
+      document.getElementById('welcome').classList.add('hidden');
+      document.getElementById('jobIntro').classList.remove('hidden');
+    }
+
+    function showCandidateA() {
+      document.getElementById('jobIntro').classList.add('hidden');
+      document.getElementById('candidateA').classList.remove('hidden');
+    }
+
+    function showAdvisorA() {
+      document.getElementById('advisorA').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
+
