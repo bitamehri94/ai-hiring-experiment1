@@ -103,6 +103,16 @@
     }
   </style>
 </head>
+  <div class="container" id="introMessage">
+  ...
+</div>
+<script>
+  function startExperiment() {
+    document.getElementById('introMessage').classList.add('hidden');
+    document.getElementById('welcome').classList.remove('hidden');
+  }
+</script>
+
 <body>
   <!-- Your previous HTML content here (welcome screen, job intro, candidateA, etc.) -->
   <!DOCTYPE html>
